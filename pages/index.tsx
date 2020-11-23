@@ -2,7 +2,11 @@ import { Row, Col } from "antd";
 import AOS from "aos";
 import { useEffect } from "react";
 
-const Section = ({ children }) => <div data-aos="fade-in">{children}</div>;
+const Section = ({ children, id }: { children: any; id?: string }) => (
+  <div data-aos="fade-in" id={id ? id : null}>
+    {children}
+  </div>
+);
 
 const Page = () => {
   useEffect(() => {
@@ -13,6 +17,13 @@ const Page = () => {
       <Col xs={20} sm={20} md={12}>
         <div>
           <div>THE TELL-TALE HEART by Edgar Allan Poe 1843</div>
+          <div
+            className="item item--secondary"
+            data-aos="fade-right"
+            data-aos-anchor="#trigger-left"
+          >
+            <img src={"/poe.jpg"} alt="Edgar Allen Poe" className="poe" />
+          </div>
 
           <Section>
             TRUE! --nervous --very, very dreadfully nervous I had been and am;
@@ -35,7 +46,7 @@ const Page = () => {
             forever.
           </Section>
 
-          <Section>
+          <Section id="trigger-left">
             Now this is the point. You fancy me mad. Madmen know nothing. But
             you should have seen me. You should have seen how wisely I proceeded
             --with what caution --with what foresight --with what dissimulation
